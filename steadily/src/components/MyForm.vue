@@ -33,6 +33,7 @@ input {
   background: white;
   padding: 16px;
   font-size: 22px;
+  outline: none;
 }
 ::placeholder {
   font-size: 22px;
@@ -46,5 +47,6 @@ button {
   border-radius: 6px;
   font-size: 18px;
   font-weight: 500;
+  cursor: pointer;
 }
 </style>

@@ -3,8 +3,6 @@
 import { h } from "vue";
 
 const box = (props, { slots }) => {
-  //   const width = "100%" ?? props.width;
-  //   const height = "100%" ?? props.height;
   return h(
     "div",
     {
@@ -13,6 +11,7 @@ const box = (props, { slots }) => {
         width: props.width,
         height: props.height,
         padding: props.padding,
+        margin: props.margin,
       },
     },
     slots

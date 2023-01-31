@@ -4,11 +4,12 @@ const flexbox = (props, { slots }) => {
   return h(
     "article",
     {
-      class: "flex",
+      class: ["flex", props.className],
       style: {
         width: props.width,
         height: props.height,
         padding: props.padding,
+        flexDirection: props.flow,
         justifyContent: props.justifyContent,
         alignItems: props.alignItems,
         gap: props.gap,

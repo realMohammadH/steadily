@@ -9,6 +9,8 @@ const sectionTitle = (props, { slots }) => {
         fontSize: props.fontSize,
         textAlign: props.textAlign,
         margin: props.margin,
+        letterSpacing: props.letterSpacing,
+        lineHeight: props.lineHeight,
       },
     },
     slots

@@ -11,7 +11,9 @@ const grid = (props, { slots }) => {
         gridAutoFlow: props.flow,
         gridTemplateColumns: `repeat(auto-fit, ${width})`,
         gridTemplateRows: `repeat(auto-fit,${height})`,
-        gridGap: props.gap,
+        gridRowGap: props.rowGap,
+        gridColumnGap: props.columnGap,
+        gap: props.gap,
       },
     },
     slots

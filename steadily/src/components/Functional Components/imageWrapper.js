@@ -9,6 +9,7 @@ const imageWrapper = (props, { slots }) => {
         width: props.width,
         height: props.height,
         padding: props.padding,
+        margin: props.margin,
       },
     },
     slots

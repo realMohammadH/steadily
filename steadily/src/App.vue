@@ -57,6 +57,59 @@ const PropertiesCoveredImages = ref([
   { image: "./assets/images/pc-image-5.png", title: "Condo units" },
   { image: "./assets/images/pc-image-6.png", title: "Manufactured" },
 ]);
+
+const coveragesCards = ref([
+  {
+    image: "./assets/images/coverages-img-1.png",
+    title: "Fire",
+    description: `Because of modern safety codes, fires have become rarer,
+    but the fires that do start tend to cause total destruction of the property.`,
+  },
+  {
+    image: "./assets/images/coverages-img-2.png",
+    title: "Water",
+    description: `Broken pipes and appliance leaks are the most common and overall 
+    the most expensive property damage for rental properties.`,
+  },
+  {
+    image: "./assets/images/coverages-img-3.png",
+    title: "Windstorm, hail, & lightning",
+    description: `Roof damage from storms has become increasingly common as the intensity
+    and frequency of storms have increased over the last two decades.`,
+  },
+  {
+    image: "./assets/images/coverages-img-4.png",
+    title: "Lawsuits",
+    description: `Liability protection covers the cost of defending you and settling 
+    claims from tenants and their guests for injuries sustained on your property.`,
+  },
+  {
+    image: "./assets/images/coverages-img-5.png",
+    title: "Riot and civil commotion",
+    description: `When violent protests break out, riot coverage can pay to fix property
+    damage caused by looters and protestors.`,
+  },
+  {
+    image: "./assets/images/coverages-img-6.png",
+    title: "Vandalism & theft",
+    description: `Malicious mischief coverage, as it’s known, covers repairs to broken glass, 
+    graffiti removal, and replacement of stolen or damaged property like shared washing machines.`,
+  },
+  {
+    image: "./assets/images/coverages-img-7.png",
+    title: "Injury",
+    description: `Injury protection can keep you from getting stuck with the cost of 
+    medical bills if a tenant or visitor gets injured on the property.`,
+  },
+  {
+    image: "./assets/images/coverages-img-8.png",
+    title: "Bonus coverages",
+    description: `Many policies also include coverage for a long list of other perils
+    such as riots or civil commotion, explosions, volcanic eruptions, and damage caused by vehicles.`,
+  },
+]);
+
+const nationalLocalImage = ref("./assets/");
 // My Functional Components
 
 const mySection = (props, { slots }) => {
@@ -288,14 +341,58 @@ function imageUrl(path) {
     </mySection>
     <mySection class="coverages">
       <container>
-        <flexbox>
-          <wrapper></wrapper>
-          <wrapper>
-            <grid width="288px">
-              <wrapper class="card" width="288px" height="266px"> </wrapper>
+        <flexbox alignItems="flex-start">
+          <wrapper width="50%">
+            <wrapper textAlign="start" padding="0 224px 0 0">
+              <section-title> Our coverage's </section-title>
+              <section-sub-title margin="0 0 32px"
+                >Your insurance policy can cover a wide range of risks, or you
+                can choose a limited set of coverages for a lower
+                premium.</section-sub-title
+              >
+              <btn>Get a quote</btn>
+            </wrapper>
+          </wrapper>
+          <wrapper width="50%">
+            <grid width="288px" gap="16px" rowGap="48px">
+              <wrapper
+                class="card"
+                v-for="c in coveragesCards"
+                width="288px"
+                height="auto"
+                textAlign="start"
+              >
+                <imageWrapper margin="0 0 13px">
+                  <img :src="imageUrl(c.image)" alt="" />
+                </imageWrapper>
+                <anytext
+                  tag="h3"
+                  fontSize="24px"
+                  fontWeight="500"
+                  :activeSecondFont="true"
+                >
+                  {{ c.title }}
+                </anytext>
+                <section-sub-title>
+                  {{ c.description }}
+                </section-sub-title>
+              </wrapper>
             </grid>
           </wrapper>
         </flexbox>
+      </container>
+    </mySection>
+    <mySection :background="imageUrl()">
+      <container>
+        <wrapper width="480px" textAlign="start">
+          <section-title>We're national & local</section-title>
+          <section-sub-title>
+            Steadily offers affordable landlord insurance across all 50 states.
+            Our team of knowledgeable sales agents across the country are
+            experts at finding the right coverage for your needs. From one local
+            property to a portfolio across various states, we have you covered.
+          </section-sub-title>
+        </wrapper>
       </container>
     </mySection>
   </main>

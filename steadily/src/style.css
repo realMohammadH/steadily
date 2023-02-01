@@ -63,3 +63,24 @@ a {
   margin: 0;
   padding: 0;
 }
+:is(.container, .flex, .grid, nav, .nav-list) {
+  width: 100%;
+  height: 100%;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.grid {
+  display: grid;
+}
+.title {
+  font-family: var(--title-font-family);
+  font-size: 52px;
+  font-weight: 500;
+  line-height: 60px;
+  letter-spacing: -1.6px;
+  word-spacing: -1px;
+  color: var(--font-primary-color);
+  margin-bottom: 32px;
+}

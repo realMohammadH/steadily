@@ -11,6 +11,11 @@ import Slider from "./components/Slider.vue";
 import sectionSubTitle from "./components/Functional Components/SectionSubTitle";
 import anytext from "./components/Functional Components/AnyText";
 import btn from "./components/Functional Components/Button";
+import navlist from "./components/Functional Components/navList";
+import navlink from "./components/Functional Components/navLink";
+import container from "./components/Functional Components/Container";
+import Footer from "./components/Footer.vue";
+import { coveragesCards, propertiesCoveredImages } from "./store/cardsData";
 // My Data
 const navBarLinks = ref([
   {
@@ -30,7 +35,7 @@ const navBarLinks = ref([
     link: "#",
   },
 ]);
-
+//#region
 const sliderImages = ref([
   "./assets/images/comp-1.png",
   "./assets/images/comp-2.png",
@@ -39,7 +44,7 @@ const sliderImages = ref([
   "./assets/images/comp-5.png",
   "./assets/images/comp-6.png",
 ]);
-
+//#region
 const whoIsSectionImage = ref("./assets/images/who-is.png");
 
 const TargetAudience = ref([
@@ -47,66 +52,6 @@ const TargetAudience = ref([
   "Fire and water damage",
   "Financial protection against natural disasters",
   "Protection for your furnishings",
-]);
-
-const PropertiesCoveredImages = ref([
-  { image: "./assets/images/pc-image-1.png", title: "Single-family" },
-  { image: "./assets/images/pc-image-2.png", title: "Multi-family" },
-  { image: "./assets/images/pc-image-3.png", title: "Vacant or restoration" },
-  { image: "./assets/images/pc-image-4.png", title: "Apartment building" },
-  { image: "./assets/images/pc-image-5.png", title: "Condo units" },
-  { image: "./assets/images/pc-image-6.png", title: "Manufactured" },
-]);
-
-const coveragesCards = ref([
-  {
-    image: "./assets/images/coverages-img-1.png",
-    title: "Fire",
-    description: `Because of modern safety codes, fires have become rarer,
-    but the fires that do start tend to cause total destruction of the property.`,
-  },
-  {
-    image: "./assets/images/coverages-img-2.png",
-    title: "Water",
-    description: `Broken pipes and appliance leaks are the most common and overall 
-    the most expensive property damage for rental properties.`,
-  },
-  {
-    image: "./assets/images/coverages-img-3.png",
-    title: "Windstorm, hail, & lightning",
-    description: `Roof damage from storms has become increasingly common as the intensity
-    and frequency of storms have increased over the last two decades.`,
-  },
-  {
-    image: "./assets/images/coverages-img-4.png",
-    title: "Lawsuits",
-    description: `Liability protection covers the cost of defending you and settling 
-    claims from tenants and their guests for injuries sustained on your property.`,
-  },
-  {
-    image: "./assets/images/coverages-img-5.png",
-    title: "Riot and civil commotion",
-    description: `When violent protests break out, riot coverage can pay to fix property
-    damage caused by looters and protestors.`,
-  },
-  {
-    image: "./assets/images/coverages-img-6.png",
-    title: "Vandalism & theft",
-    description: `Malicious mischief coverage, as it’s known, covers repairs to broken glass, 
-    graffiti removal, and replacement of stolen or damaged property like shared washing machines.`,
-  },
-  {
-    image: "./assets/images/coverages-img-7.png",
-    title: "Injury",
-    description: `Injury protection can keep you from getting stuck with the cost of 
-    medical bills if a tenant or visitor gets injured on the property.`,
-  },
-  {
-    image: "./assets/images/coverages-img-8.png",
-    title: "Bonus coverages",
-    description: `Many policies also include coverage for a long list of other perils
-    such as riots or civil commotion, explosions, volcanic eruptions, and damage caused by vehicles.`,
-  },
 ]);
 
 const nationalLocalImage = ref("./assets/images/national-local-img.png");
@@ -118,33 +63,6 @@ const icons = ref([
   "./assets/icons/instagram.svg",
 ]);
 
-const footerListOne = ref({
-  title: "Resources",
-  links: [
-    "Coverages",
-    "Blog",
-    "Glossary",
-    "Landlord insurance FAQs",
-    "API + Integrations",
-  ],
-});
-
-const footerListTwo = ref({
-  title: "Company",
-  links: [
-    "Careers",
-    "Licenses",
-    "Partner program",
-    "Brand ambassadors",
-    "Agents",
-    "Press room",
-  ],
-});
-
-const footerListThree = ref({
-  title: "Contact",
-  links: ["Log in", "Submit a claim", "Contact us", "1 (888) 966-1611"],
-});
 // My Functional Components
 
 const mySection = (props, { slots }) => {
@@ -157,51 +75,6 @@ const mySection = (props, { slots }) => {
         padding: "64px 0",
         background: props.background,
         height: props.height,
-      },
-    },
-    slots
-  );
-};
-const container = (props, { slots }) => {
-  return h(
-    "div",
-    {
-      class: "container",
-      style: {
-        position: "relative",
-        width: "1200px",
-        margin: "0 auto",
-        height: props.height,
-      },
-    },
-    slots
-  );
-};
-const navlist = (props, { slots }) => {
-  return h(
-    "ul",
-    {
-      class: ["nav-list", "flex"],
-      style: {
-        flexDirection: props.flow,
-        alignItems: props.alignItems,
-        justifyContent: props.justifyContent,
-        gap: props.gap,
-      },
-    },
-    slots
-  );
-};
-const navlink = (props, { slots }) => {
-  return h(
-    "a",
-    {
-      class: "nav-link",
-      style: {
-        display: "block",
-        fontSize: props.fontSize,
-        fontWeight: props.fontWeight,
-        color: props.color,
       },
     },
     slots
@@ -271,12 +144,19 @@ function imageUrl(path) {
       </container>
     </mySection>
     <mySection>
-      <wrapper width="768px" margin="0 auto">
-        <sectionTitle textAlign="center"
+      <wrapper width="768px" margin="0 auto" textAlign="center">
+        <sectionTitle
           >Steadily is the best-rated landlord insurance company in America
         </sectionTitle>
+        <sectionSubTitle>
+          Rated Excellent (4.8 stars out of 5) on TrustPilot
+        </sectionSubTitle>
       </wrapper>
-      <slider> </slider>
+      <grid>
+        <slider>
+          <wrapper class="card"></wrapper>
+        </slider>
+      </grid>
     </mySection>
     <mySection class="Audience">
       <container>
@@ -332,7 +212,7 @@ function imageUrl(path) {
             >
           </wrapper>
           <wrapper
-            v-for="i in PropertiesCoveredImages"
+            v-for="i in propertiesCoveredImages"
             class="card"
             width="288px"
             height="320px"
@@ -452,54 +332,10 @@ function imageUrl(path) {
       </container>
     </mySection>
   </main>
-  <footer>
-    <container>
-      <flexbox alignItems="flex-start">
-        <wrapper width="50%">
-          <logo color="white" margin="0 0 12px" />
-          <flexbox gap="24px">
-            <object
-              v-for="i in icons"
-              type="image/svg+xml"
-              :data="imageUrl(i)"
-              width="24px"
-              height="24px"
-            ></object>
-          </flexbox>
-        </wrapper>
-
-        <flexbox width="50%" gap="16px" alignItems="flex-start">
-          <!-- <template v-for="lists in "> </template> -->
-          <!-- Don't Repeat Your Code   -->
-          <navlist flow="column" alignItems="flex-start">
-            <sectionTitle fontSize="24px" color="white">Title</sectionTitle>
-            <navlink v-for="link in footerListOne.links" color="white">
-              {{ link }}</navlink
-            >
-          </navlist>
-          <navlist flow="column" alignItems="flex-start">
-            <sectionTitle fontSize="24px" color="white">Title</sectionTitle>
-            <navlink v-for="link in footerListTwo.links" color="white">
-              {{ link }}</navlink
-            >
-          </navlist>
-          <navlist flow="column" alignItems="flex-start">
-            <sectionTitle fontSize="24px" color="white">Title</sectionTitle>
-            <navlink v-for="link in footerListThree.links" color="white">
-              {{ link }}</navlink
-            >
-          </navlist>
-        </flexbox>
-      </flexbox>
-    </container>
-  </footer>
+  <Footer></Footer>
 </template>
 
 <style scoped>
-:is(.container, .flex, .grid, nav, .nav-list) {
-  width: 100%;
-  height: 100%;
-}
 header {
   background: white;
   height: 80px;
@@ -507,23 +343,7 @@ header {
 header .container {
   width: 1432px !important;
 }
-.flex {
-  display: flex;
-  align-items: center;
-}
-.grid {
-  display: grid;
-}
-.title {
-  font-family: var(--title-font-family);
-  font-size: 52px;
-  font-weight: 500;
-  line-height: 60px;
-  letter-spacing: -1.6px;
-  word-spacing: -1px;
-  color: var(--font-primary-color);
-  margin-bottom: 32px;
-}
+
 .hero-word {
   position: relative;
   display: inline-block;
@@ -581,18 +401,5 @@ header .container {
   position: absolute;
   bottom: 0;
   margin-bottom: 50px;
-}
-footer {
-  padding: 80px 0;
-  border-top: 0.3px solid #474644;
-  background: var(--font-primary-color);
-}
-footer .nav-list .nav-link {
-  margin-bottom: 16px;
-}
-
-footer .nav-list .nav-link .title {
-  margin-bottom: 30px !important;
-  line-height: 32px !important;
 }
 </style>

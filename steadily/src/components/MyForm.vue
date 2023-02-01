@@ -1,10 +1,14 @@
 <script setup>
+import { defineProps } from "vue";
+const props = defineProps(["margin", "labelColor"]);
 </script>
 
 <template>
-  <form action="submit">
+  <form action="submit" :style="{ margin: props['margin'] }">
     <div class="form-group">
-      <label for="email-address">Your property address</label>
+      <label for="email-address" :style="{ color: props['labelColor'] }"
+        >Your property address</label
+      >
       <input type="email" placeholder="Your address here..." />
     </div>
     <button>Get a quote</button>

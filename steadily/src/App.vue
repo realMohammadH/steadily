@@ -109,7 +109,42 @@ const coveragesCards = ref([
   },
 ]);
 
-const nationalLocalImage = ref("./assets/");
+const nationalLocalImage = ref("./assets/images/national-local-img.png");
+
+const icons = ref([
+  "./assets/icons/facebook.svg",
+  "./assets/icons/linkedin.svg",
+  "./assets/icons/twitter.svg",
+  "./assets/icons/instagram.svg",
+]);
+
+const footerListOne = ref({
+  title: "Resources",
+  links: [
+    "Coverages",
+    "Blog",
+    "Glossary",
+    "Landlord insurance FAQs",
+    "API + Integrations",
+  ],
+});
+
+const footerListTwo = ref({
+  title: "Company",
+  links: [
+    "Careers",
+    "Licenses",
+    "Partner program",
+    "Brand ambassadors",
+    "Agents",
+    "Press room",
+  ],
+});
+
+const footerListThree = ref({
+  title: "Contact",
+  links: ["Log in", "Submit a claim", "Contact us", "1 (888) 966-1611"],
+});
 // My Functional Components
 
 const mySection = (props, { slots }) => {
@@ -118,8 +153,10 @@ const mySection = (props, { slots }) => {
     {
       class: ["section", props.className],
       style: {
+        position: "relative",
         padding: "64px 0",
         background: props.background,
+        height: props.height,
       },
     },
     slots
@@ -131,8 +168,10 @@ const container = (props, { slots }) => {
     {
       class: "container",
       style: {
+        position: "relative",
         width: "1200px",
         margin: "0 auto",
+        height: props.height,
       },
     },
     slots
@@ -299,8 +338,9 @@ function imageUrl(path) {
             height="320px"
             background="white"
             radius="6px"
+            textAlign="center"
           >
-            <imageWrapper>
+            <imageWrapper width="240px" height="230px" margin="auto">
               <img :src="imageUrl(i.image)" alt="" />
             </imageWrapper>
             <anytext
@@ -354,7 +394,7 @@ function imageUrl(path) {
             </wrapper>
           </wrapper>
           <wrapper width="50%">
-            <grid width="288px" gap="16px" rowGap="48px">
+            <grid width="288px" gap="48px 16px">
               <wrapper
                 class="card"
                 v-for="c in coveragesCards"
@@ -362,7 +402,7 @@ function imageUrl(path) {
                 height="auto"
                 textAlign="start"
               >
-                <imageWrapper margin="0 0 13px">
+                <imageWrapper width="88px" height="88px" margin="0 0 13px">
                   <img :src="imageUrl(c.image)" alt="" />
                 </imageWrapper>
                 <anytext
@@ -382,9 +422,9 @@ function imageUrl(path) {
         </flexbox>
       </container>
     </mySection>
-    <mySection :background="imageUrl()">
-      <container>
-        <wrapper width="480px" textAlign="start">
+    <mySection class="national-local">
+      <container height="848px">
+        <wrapper class="content" width="480px" textAlign="start">
           <section-title>We're national & local</section-title>
           <section-sub-title>
             Steadily offers affordable landlord insurance across all 50 states.
@@ -393,16 +433,72 @@ function imageUrl(path) {
             property to a portfolio across various states, we have you covered.
           </section-sub-title>
         </wrapper>
+        <imageWrapper width="100%" height="638px">
+          <img :src="imageUrl(nationalLocalImage)" alt="" />
+        </imageWrapper>
+      </container>
+    </mySection>
+    <mySection class="get-coverage" background="var(--font-primary-color)">
+      <container>
+        <wrapper textAlign="center">
+          <section-title color="white" fontSize="72px">
+            Get coverage in minutes
+          </section-title>
+          <section-sub-title margin="0 0 42px">
+            No hidden cancellation fees. Competitive rates nationwide.
+          </section-sub-title>
+          <my-form margin="auto" label-color="white"></my-form>
+        </wrapper>
       </container>
     </mySection>
   </main>
-  <footer></footer>
+  <footer>
+    <container>
+      <flexbox alignItems="flex-start">
+        <wrapper width="50%">
+          <logo color="white" margin="0 0 12px" />
+          <flexbox gap="24px">
+            <object
+              v-for="i in icons"
+              type="image/svg+xml"
+              :data="imageUrl(i)"
+              width="24px"
+              height="24px"
+            ></object>
+          </flexbox>
+        </wrapper>
+
+        <flexbox width="50%" gap="16px" alignItems="flex-start">
+          <!-- <template v-for="lists in "> </template> -->
+          <!-- Don't Repeat Your Code   -->
+          <navlist flow="column" alignItems="flex-start">
+            <sectionTitle fontSize="24px" color="white">Title</sectionTitle>
+            <navlink v-for="link in footerListOne.links" color="white">
+              {{ link }}</navlink
+            >
+          </navlist>
+          <navlist flow="column" alignItems="flex-start">
+            <sectionTitle fontSize="24px" color="white">Title</sectionTitle>
+            <navlink v-for="link in footerListTwo.links" color="white">
+              {{ link }}</navlink
+            >
+          </navlist>
+          <navlist flow="column" alignItems="flex-start">
+            <sectionTitle fontSize="24px" color="white">Title</sectionTitle>
+            <navlink v-for="link in footerListThree.links" color="white">
+              {{ link }}</navlink
+            >
+          </navlist>
+        </flexbox>
+      </flexbox>
+    </container>
+  </footer>
 </template>
 
 <style scoped>
 :is(.container, .flex, .grid, nav, .nav-list) {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 header {
   background: white;
@@ -476,5 +572,27 @@ header .container {
   width: 16px;
   height: 16px;
   background: url(./assets/images/checkmark.png) no-repeat center;
+}
+.national-local .content {
+  position: relative;
+  z-index: 2;
+}
+.national-local .image-wrapper {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 50px;
+}
+footer {
+  padding: 80px 0;
+  border-top: 0.3px solid #474644;
+  background: var(--font-primary-color);
+}
+footer .nav-list .nav-link {
+  margin-bottom: 16px;
+}
+
+footer .nav-list .nav-link .title {
+  margin-bottom: 30px !important;
+  line-height: 32px !important;
 }
 </style>

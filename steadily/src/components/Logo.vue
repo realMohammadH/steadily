@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, computed } from "vue";
+import { defineProps, computed, ref } from "vue";
 const props = defineProps({
   color: {
     type: String,
@@ -11,7 +11,10 @@ const props = defineProps({
   },
   height: {
     type: Number,
-    default: 24
+    default: 24,
+  },
+  margin: {
+    type: String,
   },
 });
 
@@ -22,10 +25,16 @@ const logoWidth = computed(() => {
 const logoHeight = computed(() => {
   return props.height + "px";
 });
+
+const styleObj = ref({
+  width: logoWidth,
+  height: logoHeight,
+  margin: props.margin,
+});
 </script>
 
 <template>
-  <span class="logo" :style="{ width: logoWidth, height: logoHeight }">
+  <span class="logo" :style="{ styleObj }">
     <svg
       width="128"
       height="24"

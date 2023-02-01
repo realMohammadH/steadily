@@ -11,6 +11,7 @@ const sectionTitle = (props, { slots }) => {
         margin: props.margin,
         letterSpacing: props.letterSpacing,
         lineHeight: props.lineHeight,
+        color: props.color,
       },
     },
     slots

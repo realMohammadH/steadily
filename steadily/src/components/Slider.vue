@@ -1,7 +1,12 @@
 <script setup>
 import { defineProps } from "vue";
-import flexbox from "./Functional Components/flex";
-const props = defineProps(["padding", "slider-width", "slider-track_width"]);
+const props = defineProps([
+  "padding",
+  "slider-width",
+  "slider-track_width",
+  "gridCardsWidth",
+  "translateX",
+]);
 </script>
 
 <template>
@@ -10,20 +15,26 @@ const props = defineProps(["padding", "slider-width", "slider-track_width"]);
     :padding="props['padding']"
     :width="props['slider-width']"
   >
-    <div class="slider-track" :style="{ width: props['slider-track_width'] }">
+    <grid
+      class="slider-track"
+      :style="{
+        width: props['slider-track_width'],
+        translate: props['translateX'],
+      }"
+      flow="row"
+      :gridCardsWidth="props['gridCardsWidth']"
+    >
       <slot></slot>
-    </div>
+    </grid>
   </flexbox>
 </template>
 
 <style scoped>
 .slider {
-  justify-content: center;
+  overflow: hidden;
 }
 .slider-track {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 133px);
-  gap: 20px;
-  grid-auto-flow: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

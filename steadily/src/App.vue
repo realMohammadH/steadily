@@ -4,7 +4,7 @@ import Logo from "./components/Logo.vue";
 import flexbox from "./components/Functional Components/flex";
 // import grid from "./components/Functional Components/grid";
 import Grid from "./components/Grid.vue";
-import wrapper from "./components/Functional Components/contentWrapper";
+import wrapper from "./components/Functional Components/Wrapper";
 import imageWrapper from "./components/Functional Components/imageWrapper";
 import sectionTitle from "./components/Functional Components/sectionTitle";
 import MyForm from "./components/MyForm.vue";
@@ -17,6 +17,7 @@ import navlink from "./components/Functional Components/navLink";
 import Properties from "./components/Properties.vue";
 import Footer from "./components/Footer.vue";
 import coverages from "./components/Coverages.vue";
+import TopLandlord from "./components/TopLandlord.vue";
 
 // My Data
 const navBarLinks = ref([
@@ -116,12 +117,8 @@ function imageUrl(path) {
           </flexbox>
           <container>
             <p class="hero-word">as seen on</p>
-            <slider>
-              <imageWrapper
-                v-for="img in sliderImages"
-                width="133px"
-                height="104px"
-              >
+            <slider flow="row" gridCardsWidth="133px">
+              <imageWrapper v-for="img in sliderImages" height="104px">
                 <img :src="imageUrl(img)" alt="" />
               </imageWrapper>
             </slider>
@@ -129,21 +126,7 @@ function imageUrl(path) {
         </grid>
       </container>
     </sectionWrapper>
-    <sectionWrapper>
-      <wrapper width="768px" margin="0 auto" textAlign="center">
-        <sectionTitle
-          >Steadily is the best-rated landlord insurance company in America
-        </sectionTitle>
-        <sectionSubTitle>
-          Rated Excellent (4.8 stars out of 5) on TrustPilot
-        </sectionSubTitle>
-      </wrapper>
-      <grid>
-        <slider>
-          <wrapper class="card"></wrapper>
-        </slider>
-      </grid>
-    </sectionWrapper>
+    <TopLandlord></TopLandlord>
     <sectionWrapper class="Audience">
       <container>
         <flexbox justifyContent="space-between">

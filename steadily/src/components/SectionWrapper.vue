@@ -16,5 +16,6 @@ const props = defineProps(["background", "height", "className"]);
 section {
   position: relative;
   padding: 64px 0;
+  overflow: hidden;
 }
 </style>

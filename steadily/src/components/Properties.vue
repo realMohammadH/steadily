@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from "vue";
 import sectionTitle from "./Functional Components/sectionTitle";
 import sectionSubTitle from "./Functional Components/SectionSubTitle";
 import anytext from "./Functional Components/AnyText";

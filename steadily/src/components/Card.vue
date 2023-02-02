@@ -2,7 +2,7 @@
 import { defineProps, computed } from "vue";
 const props = defineProps(["className", "padding", "width", "height"]);
 
-const className = computed(() => "." + props["className"]);
+// const className = computed(() => "." + props["className"]);
 </script>
 
 <template>

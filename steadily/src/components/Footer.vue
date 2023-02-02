@@ -1,6 +1,6 @@
 <script setup>
 import flexbox from "./Functional Components/flex";
-import wrapper from "./Functional Components/contentWrapper";
+import wrapper from "./Functional Components/Wrapper";
 import sectionTitle from "./Functional Components/sectionTitle";
 import navlist from "./Functional Components/navList";
 import navlink from "./Functional Components/navLink";

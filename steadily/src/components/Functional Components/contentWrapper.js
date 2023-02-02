@@ -3,10 +3,11 @@
 import { h } from "vue";
 
 const wrapper = (props, { slots }) => {
+  const className = props.className ?? "wrapper";
   return h(
     "div",
     {
-      class: "wrapper",
+      class: className,
       style: {
         width: props.width,
         height: props.height,

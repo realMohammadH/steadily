@@ -1,9 +1,9 @@
 <script setup>
-import { ref } from "vue";
+import { h, ref, defineProps, computed, defineAsyncComponent } from "vue";
 import Logo from "./components/Logo.vue";
+import Section from "./components/Functional Components/Section";
 import flexbox from "./components/Functional Components/flex";
-// import grid from "./components/Functional Components/grid";
-import Grid from "./components/Grid.vue";
+import grid from "./components/Functional Components/grid";
 import wrapper from "./components/Functional Components/contentWrapper";
 import imageWrapper from "./components/Functional Components/imageWrapper";
 import sectionTitle from "./components/Functional Components/sectionTitle";
@@ -14,10 +14,10 @@ import anytext from "./components/Functional Components/AnyText";
 import btn from "./components/Functional Components/Button";
 import navlist from "./components/Functional Components/navList";
 import navlink from "./components/Functional Components/navLink";
-import Properties from "./components/Properties.vue";
+import container from "./components/Functional Components/Container";
 import Footer from "./components/Footer.vue";
-import coverages from "./components/Coverages.vue";
 
+import { coveragesCards, propertiesCoveredImages } from "./store/cardsData";
 // My Data
 const navBarLinks = ref([
   {
@@ -95,7 +95,7 @@ function imageUrl(path) {
     </container>
   </header>
   <main>
-    <sectionWrapper className="hero" background="var(--bg-secondary-color)">
+    <Section className="hero" background="var(--bg-secondary-color)">
       <container>
         <grid gap="64px">
           <flexbox>
@@ -128,8 +128,8 @@ function imageUrl(path) {
           </container>
         </grid>
       </container>
-    </sectionWrapper>
-    <sectionWrapper>
+    </Section>
+    <Section>
       <wrapper width="768px" margin="0 auto" textAlign="center">
         <sectionTitle
           >Steadily is the best-rated landlord insurance company in America
@@ -143,8 +143,8 @@ function imageUrl(path) {
           <wrapper class="card"></wrapper>
         </slider>
       </grid>
-    </sectionWrapper>
-    <sectionWrapper class="Audience">
+    </Section>
+    <Section class="Audience">
       <container>
         <flexbox justifyContent="space-between">
           <imageWrapper width="560px" height="560px">
@@ -171,10 +171,124 @@ function imageUrl(path) {
           </wrapper>
         </flexbox>
       </container>
-    </sectionWrapper>
-    <properties></properties>
-    <coverages></coverages>
-    <sectionWrapper class="national-local">
+    </Section>
+    <Section background="var(--bg-secondary-color)">
+      <container>
+        <grid width="288px" gap="16px">
+          <wrapper class="card" textAlign="start" width="288px" height="320px">
+            <section-title margin="0 0 20px">
+              Properties we cover
+            </section-title>
+            <section-sub-title margin="0 0 30px" fontSize="18px">
+              We make it easy to get property insurance for whatever type of
+              property you own.
+            </section-sub-title>
+            <anytext
+              tag="p"
+              color="var(--font-secondary-color)"
+              fontSize="18px"
+              fontWeight="600"
+              >We also cover
+              <anytext tag="span" color="var(--bg-tertiary-color)"
+                >AirBNBs</anytext
+              >,
+              <anytext tag="span" color="var(--bg-tertiary-color)"
+                >VRBOs</anytext
+              >, and other rentals.</anytext
+            >
+          </wrapper>
+          <wrapper
+            v-for="i in propertiesCoveredImages"
+            class="card"
+            width="288px"
+            height="320px"
+            background="white"
+            radius="6px"
+            textAlign="center"
+          >
+            <imageWrapper width="240px" height="230px" margin="auto">
+              <img :src="imageUrl(i.image)" alt="" />
+            </imageWrapper>
+            <anytext
+              tag="h3"
+              fontSize="24px"
+              color="#252523"
+              fontWeight="500"
+              fontFamily="--title-font-family"
+              >{{ i.title }}</anytext
+            >
+          </wrapper>
+          <wrapper
+            class="card"
+            radius="6px"
+            width="288px"
+            height="320px"
+            padding="74px 24px"
+            background="var(--bg-tertiary-color)"
+            textAlign="start"
+          >
+            <anytext
+              tag="h3"
+              lineHeight="32px"
+              fontSize="24px"
+              fontWeight="500"
+              color="white"
+              :activeSecondFont="true"
+              margin="0 0 16px"
+            >
+              Not sure if your home is insured?
+            </anytext>
+            <btn backgroundColor="white" color="var(--bg-tertiary-color)"
+              >Contact us</btn
+            >
+          </wrapper>
+        </grid>
+      </container>
+    </Section>
+    <Section class="coverages">
+      <container>
+        <flexbox alignItems="flex-start">
+          <wrapper width="50%">
+            <wrapper textAlign="start" padding="0 224px 0 0">
+              <section-title> Our coverage's </section-title>
+              <section-sub-title margin="0 0 32px"
+                >Your insurance policy can cover a wide range of risks, or you
+                can choose a limited set of coverages for a lower
+                premium.</section-sub-title
+              >
+              <btn>Get a quote</btn>
+            </wrapper>
+          </wrapper>
+          <wrapper width="50%">
+            <grid width="288px" gap="48px 16px">
+              <wrapper
+                class="card"
+                v-for="c in coveragesCards"
+                width="288px"
+                height="auto"
+                textAlign="start"
+              >
+                <imageWrapper width="88px" height="88px" margin="0 0 13px">
+                  <img :src="imageUrl(c.image)" alt="" />
+                </imageWrapper>
+                <anytext
+                  tag="h3"
+                  fontSize="24px"
+                  fontWeight="500"
+                  :activeSecondFont="true"
+                >
+                  {{ c.title }}
+                </anytext>
+                <section-sub-title>
+                  {{ c.description }}
+                </section-sub-title>
+              </wrapper>
+            </grid>
+          </wrapper>
+        </flexbox>
+      </container>
+    </Section>
+    <Section class="national-local">
       <container height="848px">
         <wrapper class="content" width="480px" textAlign="start">
           <section-title>We're national & local</section-title>
@@ -189,8 +303,8 @@ function imageUrl(path) {
           <img :src="imageUrl(nationalLocalImage)" alt="" />
         </imageWrapper>
       </container>
-    </sectionWrapper>
-    <sectionWrapper class="get-coverage" background="var(--font-primary-color)">
+    </Section>
+    <Section class="get-coverage" background="var(--font-primary-color)">
       <container>
         <wrapper textAlign="center">
           <section-title color="white" fontSize="72px">
@@ -202,7 +316,7 @@ function imageUrl(path) {
           <my-form margin="auto" label-color="white"></my-form>
         </wrapper>
       </container>
-    </sectionWrapper>
+    </Section>
   </main>
   <Footer></Footer>
 </template>

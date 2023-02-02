@@ -71,9 +71,6 @@ a {
   display: flex;
   align-items: center;
 }
-.grid {
-  display: grid;
-}
 .title {
   font-family: var(--title-font-family);
   font-size: 52px;

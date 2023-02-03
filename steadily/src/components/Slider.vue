@@ -6,6 +6,7 @@ const props = defineProps([
   "slider-track_width",
   "gridCardsWidth",
   "translateX",
+  "gap",
 ]);
 </script>
 
@@ -21,7 +22,8 @@ const props = defineProps([
         width: props['slider-track_width'],
         translate: props['translateX'],
       }"
-      flow="row"
+      flow="column"
+      :gap="props['gap']"
       :gridCardsWidth="props['gridCardsWidth']"
     >
       <slot></slot>
@@ -36,5 +38,6 @@ const props = defineProps([
 .slider-track {
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 </style>

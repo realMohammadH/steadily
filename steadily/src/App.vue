@@ -2,7 +2,6 @@
 import { ref } from "vue";
 import Logo from "./components/Logo.vue";
 import flexbox from "./components/Functional Components/flex";
-// import grid from "./components/Functional Components/grid";
 import Grid from "./components/Grid.vue";
 import wrapper from "./components/Functional Components/Wrapper";
 import imageWrapper from "./components/Functional Components/imageWrapper";
@@ -88,6 +87,17 @@ function imageUrl(path) {
                 <navlink :href="i.link" color="var(--font-primary-color)">{{
                   i.title
                 }}</navlink>
+              </li>
+              <li>
+                <navlist gap="24px">
+                  <anytext
+                    tag="a"
+                    href="tel:888966-1611"
+                    color="var(--bg-tertiary-color)"
+                    >(888) 966-1611</anytext
+                  >
+                  <btn>Get a quote</btn>
+                </navlist>
               </li>
             </navlist>
           </li>
@@ -197,8 +207,14 @@ header {
 }
 header .container {
   width: 1432px !important;
+  height: 100%;
 }
-
+header nav {
+  height: 100%;
+}
+header :deep(.nav-list) {
+  height: 100%;
+}
 .hero-word {
   position: relative;
   display: inline-block;
@@ -208,13 +224,13 @@ header .container {
   font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  text-align: center;
 }
 .hero-word::before,
 .hero-word::after {
   content: "";
   position: absolute;
   bottom: 6px;
-  /* transform: translateY(50%); */
   width: calc(50% - (8em / 2));
   height: 1px;
   background-color: #d5d0cf;

@@ -4,7 +4,7 @@ import sectionSubTitle from "./Functional Components/SectionSubTitle";
 import anytext from "./Functional Components/AnyText";
 import imageWrapper from "./Functional Components/imageWrapper";
 import { propertiesCards } from "../store/cardsData";
-// import imageUrl from "./Methods/renderImages";
+// import imageUrl from "./Composables/renderImages";
 
 function imageUrl(path) {
   return new URL(path, import.meta.url).href;

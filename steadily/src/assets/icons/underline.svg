@@ -1,0 +1,10 @@
+<svg stroke-linejoin="bevel" width="205" height="9"  viewBox="0 0 205 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g stroke-linejoin="bevel" clip-path="url(#clip0_1_50963)">
+<path d="M200.367 1.60983H195.599L102.625 0.0927734C71.6338 0.0927734 40.6426 1.17638 9.65133 2.69344L4.88344 2.91016C-0.751332 3.12688 -0.53461 8.54493 5.10016 8.32821L10.0848 8.11149C40.8593 6.59444 71.8506 5.51083 102.625 5.51083L195.382 7.02788H200.15C205.785 7.2446 206.002 1.60983 200.367 1.60983Z" fill="#670C6E" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath stroke-linejoin="round" id="clip0_1_50963">
+<rect width="203.719" height="8.23544" fill="white" transform="translate(0.765625 0.0927734)" stroke-linejoin="round"/>
+</clipPath>
+</defs>
+</svg>

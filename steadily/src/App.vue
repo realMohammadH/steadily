@@ -1,23 +1,19 @@
 <script setup>
 import { ref } from "vue";
 import Logo from "./components/Logo.vue";
-import flexbox from "./components/Functional Components/flex";
-import Grid from "./components/Grid.vue";
 import wrapper from "./components/Functional Components/Wrapper";
 import imageWrapper from "./components/Functional Components/imageWrapper";
 import sectionTitle from "./components/Functional Components/sectionTitle";
-import MyForm from "./components/MyForm.vue";
-import Slider from "./components/Slider.vue";
 import sectionSubTitle from "./components/Functional Components/SectionSubTitle";
 import anytext from "./components/Functional Components/AnyText";
 import btn from "./components/Functional Components/Button";
-import navlist from "./components/Functional Components/navList";
 import navlink from "./components/Functional Components/navLink";
 import Properties from "./components/Properties.vue";
 import Footer from "./components/Footer.vue";
 import coverages from "./components/Coverages.vue";
 import TopLandlord from "./components/TopLandlord.vue";
-
+import Audience from "./components/Audience.vue";
+import Hero from "./components/Hero.vue";
 // My Data
 const navBarLinks = ref([
   {
@@ -37,33 +33,8 @@ const navBarLinks = ref([
     link: "#",
   },
 ]);
-//#region
-const sliderImages = ref([
-  "./assets/images/comp-1.png",
-  "./assets/images/comp-2.png",
-  "./assets/images/comp-3.png",
-  "./assets/images/comp-4.png",
-  "./assets/images/comp-5.png",
-  "./assets/images/comp-6.png",
-]);
-//#region
-const whoIsSectionImage = ref("./assets/images/who-is.png");
-
-const TargetAudience = ref([
-  "Legal liabilities",
-  "Fire and water damage",
-  "Financial protection against natural disasters",
-  "Protection for your furnishings",
-]);
 
 const nationalLocalImage = ref("./assets/images/national-local-img.png");
-
-const icons = ref([
-  "./assets/icons/facebook.svg",
-  "./assets/icons/linkedin.svg",
-  "./assets/icons/twitter.svg",
-  "./assets/icons/instagram.svg",
-]);
 
 // My Functional Components
 
@@ -106,65 +77,9 @@ function imageUrl(path) {
     </container>
   </header>
   <main>
-    <sectionWrapper className="hero" background="var(--bg-secondary-color)">
-      <container>
-        <grid gap="64px">
-          <flexbox>
-            <wrapper width="600px">
-              <sectionTitle
-                fontSize="72px"
-                textAlign="start"
-                lineHeight="75px"
-                letterSpacing="-1px"
-              >
-                Get fast, affordable landlord insurance
-              </sectionTitle>
-              <MyForm></MyForm>
-            </wrapper>
-            <imageWrapper height="606px" width="600px">
-              <img src="./assets/images/hero-image.png" alt="" />
-            </imageWrapper>
-          </flexbox>
-          <container>
-            <p class="hero-word">as seen on</p>
-            <slider flow="row" gridCardsWidth="133px">
-              <imageWrapper v-for="img in sliderImages" height="104px">
-                <img :src="imageUrl(img)" alt="" />
-              </imageWrapper>
-            </slider>
-          </container>
-        </grid>
-      </container>
-    </sectionWrapper>
+    <hero></hero>
     <TopLandlord></TopLandlord>
-    <sectionWrapper class="Audience">
-      <container>
-        <flexbox justifyContent="space-between">
-          <imageWrapper width="560px" height="560px">
-            <img :src="imageUrl(whoIsSectionImage)" alt="" />
-          </imageWrapper>
-          <wrapper width="560px" height="560px" textAlign="start">
-            <wrapper margin="0 0 43px 0">
-              <sectionTitle textAlign="start"
-                >Who is Steadily landlord insurance for?</sectionTitle
-              >
-              <section-sub-title>
-                Landlord insurance (also known as rental insurance) is a policy
-                for people who rent their homes to others. Landlord insurance is
-                not required for a landlord, but insurance can bring many
-                benefits:
-              </section-sub-title>
-            </wrapper>
-            <navlist flow="column" alignItems="flex-start" gap="12px">
-              <li v-for="t in TargetAudience">
-                <anytext tag="p">{{ t }}</anytext>
-              </li>
-            </navlist>
-            <btn> Get a quote </btn>
-          </wrapper>
-        </flexbox>
-      </container>
-    </sectionWrapper>
+    <audience></audience>
     <properties></properties>
     <coverages></coverages>
     <sectionWrapper class="national-local">
@@ -214,55 +129,6 @@ header nav {
 }
 header :deep(.nav-list) {
   height: 100%;
-}
-.hero-word {
-  position: relative;
-  display: inline-block;
-  padding: 0 20px;
-  width: 100%;
-  color: #d5d0cf;
-  font-size: 14px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  text-align: center;
-}
-.hero-word::before,
-.hero-word::after {
-  content: "";
-  position: absolute;
-  bottom: 6px;
-  width: calc(50% - (8em / 2));
-  height: 1px;
-  background-color: #d5d0cf;
-}
-.hero-word::before {
-  left: 0;
-}
-.hero-word::after {
-  right: 0;
-}
-.Audience .nav-list {
-  margin-bottom: 32px;
-}
-.Audience .nav-list li {
-  position: relative;
-  width: 500px;
-}
-.Audience .nav-list li p {
-  position: relative;
-  width: 100%;
-}
-.Audience .nav-list li p::before {
-  display: inline-block;
-  content: "";
-  position: absolute;
-  left: -28px;
-  margin-right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 16px;
-  height: 16px;
-  background: url(./assets/images/checkmark.png) no-repeat center;
 }
 .national-local .content {
   position: relative;

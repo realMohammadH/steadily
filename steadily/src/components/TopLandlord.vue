@@ -2,13 +2,18 @@
 import sectionTitle from "./Functional Components/sectionTitle";
 import sectionSubTitle from "./Functional Components/SectionSubTitle";
 import imageWrapper from "./Functional Components/imageWrapper";
+import Highlighted from "./Highlighted.vue";
+import Divider from "./Divider.vue";
 </script>
 
 <template>
   <sectionWrapper>
+    <divider></divider>
+
     <wrapper width="768px" margin="0 auto 64px" textAlign="center">
       <sectionTitle>
-        Steadily is the best-rated landlord insurance company in America
+        Steadily is the <highlighted>best-rated</highlighted> landlord insurance
+        company in America
       </sectionTitle>
       <sectionSubTitle
         >Rated Excellent (4.8 stars out of 5) on TrustPilot</sectionSubTitle
@@ -59,5 +64,9 @@ import imageWrapper from "./Functional Components/imageWrapper";
   border-radius: 50vw;
   overflow: hidden;
   background-color: var(--font-secondary-color);
+}
+:deep(.divider) {
+  top: 0;
+  transform: translateY(0);
 }
 </style>

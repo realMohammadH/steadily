@@ -10,6 +10,10 @@ import btn from "./components/Functional Components/Button";
 import Grid from "./components/Grid.vue";
 import Card from "./components/Card.vue";
 import Slider from "./components/Slider.vue";
+import navlist from "./components/Functional Components/navList";
+import sectionTitle from "./components/Functional Components/sectionTitle";
+import sectionSubTitle from "./components/Functional Components/SectionSubTitle";
+import MyForm from "./components/MyForm.vue";
 const app = createApp(App);
 app.component("sectionWrapper", sectionWrapper);
 app.component("container", container);
@@ -19,9 +23,13 @@ app.component("flexbox", flexbox);
 app.component("grid", Grid);
 app.component("btn", btn);
 app.component("slider", Slider);
+app.component("navlist", navlist);
+app.component("sectionTitle", sectionTitle);
+app.component("sectionSubtitle", sectionSubTitle);
+app.component("my-form", MyForm);
 
-app.config.globalProperties.imageUrl = function (path) {
-  return new URL(path, import.meta.url).href;
-};
+// app.config.globalProperties.imageUrl = function (path) {
+//   return new URL(path, import.meta.url).href;
+// };
 
 app.mount("#app");
